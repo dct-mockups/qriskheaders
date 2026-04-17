@@ -388,6 +388,7 @@
     }
 
     @media (max-width: 760px) {
+
       .cards-row--5,
       .cards-row--3 {
         grid-template-columns: repeat(2, minmax(150px, 1fr));
@@ -399,6 +400,7 @@
     }
 
     @media (max-width: 440px) {
+
       .cards-row--5,
       .cards-row--3 {
         grid-template-columns: 1fr;
@@ -416,7 +418,7 @@
     <div class="header-grid">
 
       <section>
-        <div class="group-title">Indicadores de Exceso de Velocidad</div>
+        <div class="group-title">Distribución de Riesgos en la Flota</div>
 
         <div class="cards-row cards-row--5">
           <article class="card metric blue">
@@ -429,16 +431,16 @@
 
           <article class="card risk green">
             <div class="card__header">
-              <span class="card__header-label">Controlado - Bajo</span>
+              <span class="card__header-label">Bajo</span>
               <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
                 <span class="tooltip" role="tooltip">
                   <strong>Nivel de Severidad Relativa</strong>
                   Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
                   promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                  🟢 Bajo: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Medio: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Alto: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Crítico: Significativamente por encima del promedio. Prioridad de atención.
                 </span>
               </span>
             </div>
@@ -456,16 +458,16 @@
 
           <article class="card risk obs">
             <div class="card__header">
-              <span class="card__header-label">Observación - Medio</span>
+              <span class="card__header-label">Medio</span>
               <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
                 <span class="tooltip" role="tooltip">
                   <strong>Nivel de Severidad Relativa</strong>
                   Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
                   promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                  🟢 Bajo: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Medio: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Alto: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Crítico: Significativamente por encima del promedio. Prioridad de atención.
                 </span>
               </span>
             </div>
@@ -483,18 +485,18 @@
 
           <article class="card risk track">
             <div class="card__header">
-              <span class="card__header-label">Seguimiento - Alto</span>
-              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
-                <span class="tooltip" role="tooltip">
-                  <strong>Nivel de Severidad Relativa</strong>
-                  Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
-                  promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+              <span class="card__header-label" Alto</span>
+                <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                  <span class="tooltip" role="tooltip">
+                    <strong>Nivel de Severidad Relativa</strong>
+                    Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
+                    promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
+                    🟢 Bajo: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                    🟡 Medio: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                    🟠 Alto: Notablemente por encima del promedio. Intervención recomendada.<br>
+                    🔴 Crítico: Significativamente por encima del promedio. Prioridad de atención.
+                  </span>
                 </span>
-              </span>
             </div>
             <div class="card__body">
               <div class="vehicles">
@@ -510,16 +512,16 @@
 
           <article class="card risk severe">
             <div class="card__header">
-              <span class="card__header-label">Alta Severidad - Crítico</span>
+              <span class="card__header-label">Crítico</span>
               <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
                 <span class="tooltip" role="tooltip">
                   <strong>Nivel de Severidad Relativa</strong>
                   Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
                   promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                  🟢 Bajo: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Medio: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Alto: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Crítico: Significativamente por encima del promedio. Prioridad de atención.
                 </span>
               </span>
             </div>
@@ -538,7 +540,7 @@
       </section>
 
       <section>
-        <div class="group-title">Distribución de Riesgos en la Flota</div>
+        <div class="group-title">Indicadores de Exceso de Velocidad</div>
 
         <div class="cards-row cards-row--3">
           <article class="card metric yellow">
