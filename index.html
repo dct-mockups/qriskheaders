@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,9 @@
     :root {
       --bg: #efefef;
       --card-radius: 10px;
-      --shadow: 0 2px 8px rgba(0,0,0,.16);
-      --text: rgba(0,0,0,.87);
-      --muted: rgba(0,0,0,.60);
+      --shadow: 0 2px 8px rgba(0, 0, 0, .16);
+      --text: rgba(0, 0, 0, .87);
+      --muted: rgba(0, 0, 0, .60);
       --blue: rgb(25, 118, 210);
       --yellow: rgb(255, 235, 59);
       --yellow-dark: rgb(214, 192, 20);
@@ -25,7 +26,9 @@
       --severe: rgb(239, 83, 80);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -42,7 +45,7 @@
 
     .header-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(980px, 1.65fr) minmax(420px, 1fr);
       gap: 20px;
       align-items: start;
     }
@@ -51,7 +54,7 @@
       text-align: center;
       font-size: 22px;
       font-weight: 800;
-      color: rgba(0,0,0,.78);
+      color: rgba(0, 0, 0, .78);
       letter-spacing: .2px;
       margin: 4px 0 14px;
       text-wrap: balance;
@@ -59,14 +62,21 @@
 
     .cards-row {
       display: grid;
-      grid-template-columns: repeat(4, minmax(160px, 1fr));
       gap: 8px;
       align-items: stretch;
     }
 
+    .cards-row--5 {
+      grid-template-columns: repeat(5, minmax(165px, 1fr));
+    }
+
+    .cards-row--3 {
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+    }
+
     .card {
-      min-height: 126px;
-      height: 126px;
+      min-height: 144px;
+      height: 144px;
       border-radius: var(--card-radius);
       box-shadow: var(--shadow);
       overflow: visible;
@@ -77,21 +87,28 @@
     }
 
     .card__header {
-      min-height: 28px;
-      padding: 7px 10px;
+      text-transform: uppercase;
+      min-height: 52px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: .35px;
-      line-height: 1.15;
+      letter-spacing: .15px;
+      line-height: 1.2;
     }
 
     .card__header-label {
       text-transform: uppercase;
+      display: block;
+      max-width: 100%;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: auto;
     }
 
     .card__body {
@@ -100,17 +117,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 10px 10px 8px;
+      padding: 8px 10px 6px;
       text-align: center;
     }
 
     .card__footer {
-      min-height: 32px;
+      min-height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 5px;
-      padding: 0 10px 9px;
+      padding: 0 10px 8px;
       text-align: center;
     }
 
@@ -124,7 +141,7 @@
     .value-sub {
       font-size: 14px;
       font-weight: 700;
-      color: rgba(0,0,0,.62);
+      color: rgba(0, 0, 0, .62);
       line-height: 1.2;
     }
 
@@ -151,7 +168,7 @@
     .pct {
       font-size: 14px;
       font-weight: 800;
-      color: rgba(0,0,0,.82);
+      color: rgba(0, 0, 0, .82);
     }
 
     .icon {
@@ -160,31 +177,94 @@
     }
 
     /* Left cards */
-    .metric.blue   { background: rgba(25,118,210,.12); }
-    .metric.yellow { background: rgba(255,235,59,.16); }
-    .metric.orange { background: rgba(255,152,0,.14); }
-    .metric.red    { background: rgba(244,67,54,.12); }
+    .metric.blue {
+      background: rgba(25, 118, 210, .12);
+    }
 
-    .metric.blue   .card__header { background: var(--blue); color: #fff; }
-    .metric.yellow .card__header { background: var(--yellow-dark); color: rgba(0,0,0,.87); }
-    .metric.orange .card__header { background: var(--orange-dark); color: #fff; }
-    .metric.red    .card__header { background: var(--red-dark); color: #fff; }
+    .metric.yellow {
+      background: rgba(255, 235, 59, .16);
+    }
+
+    .metric.orange {
+      background: rgba(255, 152, 0, .14);
+    }
+
+    .metric.red {
+      background: rgba(244, 67, 54, .12);
+    }
+
+    .metric.blue .card__header {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .metric.yellow .card__header {
+      background: var(--yellow-dark);
+      color: rgba(0, 0, 0, .87);
+    }
+
+    .metric.orange .card__header {
+      background: var(--orange-dark);
+      color: #fff;
+    }
+
+    .metric.red .card__header {
+      background: var(--red-dark);
+      color: #fff;
+    }
 
     /* Right cards */
-    .risk.green  { background: rgba(102,187,106,.13); }
-    .risk.obs    { background: rgba(255,238,88,.13); }
-    .risk.track  { background: rgba(255,167,38,.13); }
-    .risk.severe { background: rgba(239,83,80,.13); }
+    .risk.green {
+      background: rgba(102, 187, 106, .13);
+    }
 
-    .risk.green  .card__header { background: var(--green); color: rgba(0,0,0,.87); }
-    .risk.obs    .card__header { background: var(--obs); color: rgba(0,0,0,.87); }
-    .risk.track  .card__header { background: var(--track); color: rgba(0,0,0,.87); }
-    .risk.severe .card__header { background: var(--severe); color: rgba(0,0,0,.87); }
+    .risk.obs {
+      background: rgba(255, 238, 88, .13);
+    }
 
-    .icon-green  { color: var(--green); }
-    .icon-obs    { color: #9E8A00; }
-    .icon-track  { color: var(--track); }
-    .icon-severe { color: var(--severe); }
+    .risk.track {
+      background: rgba(255, 167, 38, .13);
+    }
+
+    .risk.severe {
+      background: rgba(239, 83, 80, .13);
+    }
+
+    .risk.green .card__header {
+      background: var(--green);
+      color: rgba(0, 0, 0, .87);
+    }
+
+    .risk.obs .card__header {
+      background: var(--obs);
+      color: rgba(0, 0, 0, .87);
+    }
+
+    .risk.track .card__header {
+      background: var(--track);
+      color: rgba(0, 0, 0, .87);
+    }
+
+    .risk.severe .card__header {
+      background: var(--severe);
+      color: rgba(0, 0, 0, .87);
+    }
+
+    .icon-green {
+      color: var(--green);
+    }
+
+    .icon-obs {
+      color: #9E8A00;
+    }
+
+    .icon-track {
+      color: var(--track);
+    }
+
+    .icon-severe {
+      color: var(--severe);
+    }
 
     /* Tooltip */
     .tooltip-icon {
@@ -199,8 +279,8 @@
       font-weight: 700;
       line-height: 1;
       cursor: pointer;
-      background: rgba(255,255,255,.28);
-      color: rgba(0,0,0,.78);
+      background: rgba(255, 255, 255, .28);
+      color: rgba(0, 0, 0, .78);
       flex: 0 0 auto;
       text-transform: none;
       user-select: none;
@@ -208,7 +288,7 @@
     }
 
     .tooltip-icon:focus {
-      box-shadow: 0 0 0 2px rgba(255,255,255,.45), 0 0 0 4px rgba(0,0,0,.18);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, .45), 0 0 0 4px rgba(0, 0, 0, .18);
     }
 
     .tooltip {
@@ -218,11 +298,11 @@
       transform: translateX(-50%);
       width: 355px;
       max-width: min(355px, calc(100vw - 40px));
-      background: rgba(33,33,33,.97);
+      background: rgba(33, 33, 33, .97);
       color: white;
       padding: 12px 14px;
       border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.3);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
       font-size: 12.5px;
       line-height: 1.45;
       text-transform: none;
@@ -253,7 +333,7 @@
       transform: translateX(-50%);
       border-width: 0 7px 7px 7px;
       border-style: solid;
-      border-color: transparent transparent rgba(33,33,33,.97) transparent;
+      border-color: transparent transparent rgba(33, 33, 33, .97) transparent;
     }
 
     .tooltip-icon:hover .tooltip,
@@ -293,14 +373,23 @@
       border-radius: 3px 3px 0 0;
     }
 
-    @media (max-width: 1180px) {
+    @media (max-width: 1360px) {
       .header-grid {
         grid-template-columns: 1fr;
+      }
+
+      .cards-row--5 {
+        grid-template-columns: repeat(3, minmax(170px, 1fr));
+      }
+
+      .cards-row--3 {
+        grid-template-columns: repeat(3, minmax(170px, 1fr));
       }
     }
 
     @media (max-width: 760px) {
-      .cards-row {
+      .cards-row--5,
+      .cards-row--3 {
         grid-template-columns: repeat(2, minmax(150px, 1fr));
       }
 
@@ -310,7 +399,8 @@
     }
 
     @media (max-width: 440px) {
-      .cards-row {
+      .cards-row--5,
+      .cards-row--3 {
         grid-template-columns: 1fr;
       }
 
@@ -318,9 +408,9 @@
         width: 290px;
       }
     }
-  
-</style>
+  </style>
 </head>
+
 <body>
   <div class="page">
     <div class="header-grid">
@@ -328,7 +418,7 @@
       <section>
         <div class="group-title">Indicadores de Exceso de Velocidad</div>
 
-        <div class="cards-row">
+        <div class="cards-row cards-row--5">
           <article class="card metric blue">
             <div class="card__header">Vehículos con Excesos</div>
             <div class="card__body">
@@ -337,6 +427,120 @@
             </div>
           </article>
 
+          <article class="card risk green">
+            <div class="card__header">
+              <span class="card__header-label">Controlado - Bajo</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Nivel de Severidad Relativa</strong>
+                  Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
+                  promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
+                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                </span>
+              </span>
+            </div>
+            <div class="card__body">
+              <div class="vehicles">
+                <span class="vehicles__count">30</span>
+                <span class="vehicles__label">Vehículos</span>
+              </div>
+            </div>
+            <div class="card__footer">
+              <span class="icon icon-green">🟢</span>
+              <span class="pct">15.46 %</span>
+            </div>
+          </article>
+
+          <article class="card risk obs">
+            <div class="card__header">
+              <span class="card__header-label">Observación - Medio</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Nivel de Severidad Relativa</strong>
+                  Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
+                  promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
+                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                </span>
+              </span>
+            </div>
+            <div class="card__body">
+              <div class="vehicles">
+                <span class="vehicles__count">17</span>
+                <span class="vehicles__label">Vehículos</span>
+              </div>
+            </div>
+            <div class="card__footer">
+              <span class="icon icon-obs">🔔</span>
+              <span class="pct">8.76 %</span>
+            </div>
+          </article>
+
+          <article class="card risk track">
+            <div class="card__header">
+              <span class="card__header-label">Seguimiento - Alto</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Nivel de Severidad Relativa</strong>
+                  Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
+                  promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
+                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                </span>
+              </span>
+            </div>
+            <div class="card__body">
+              <div class="vehicles">
+                <span class="vehicles__count">20</span>
+                <span class="vehicles__label">Vehículos</span>
+              </div>
+            </div>
+            <div class="card__footer">
+              <span class="icon icon-track">🔍</span>
+              <span class="pct">10.31 %</span>
+            </div>
+          </article>
+
+          <article class="card risk severe">
+            <div class="card__header">
+              <span class="card__header-label">Alta Severidad - Crítico</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Nivel de Severidad Relativa</strong>
+                  Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al
+                  promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
+                  🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
+                  🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
+                  🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
+                  🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
+                </span>
+              </span>
+            </div>
+            <div class="card__body">
+              <div class="vehicles">
+                <span class="vehicles__count">127</span>
+                <span class="vehicles__label">Vehículos</span>
+              </div>
+            </div>
+            <div class="card__footer">
+              <span class="icon icon-severe">⚠️</span>
+              <span class="pct">65.46 %</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="group-title">Distribución de Riesgos en la Flota</div>
+
+        <div class="cards-row cards-row--3">
           <article class="card metric yellow">
             <div class="card__header">Moderados / 100 km</div>
             <div class="card__body">
@@ -360,119 +564,6 @@
         </div>
       </section>
 
-      <section>
-        <div class="group-title">Distribución de Riesgos en la Flota</div>
-
-        <div class="cards-row">
-          <article class="card risk green">
-            <div class="card__header">
-              <span class="card__header-label">Controlado</span>
-              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
-  <span class="tooltip" role="tooltip">
-    <strong>Nivel de Severidad Relativa</strong>
-    Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-    🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-    🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-    🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-    🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
-  </span>
-</span>
-            </div>
-            <div class="card__body">
-              <div class="vehicles">
-                <span class="vehicles__count">30</span>
-                <span class="vehicles__label">Vehículos</span>
-              </div>
-            </div>
-            <div class="card__footer">
-              <span class="icon icon-green">🟢</span>
-              <span class="pct">15.46 %</span>
-            </div>
-            
-          </article>
-
-          <article class="card risk obs">
-            <div class="card__header">
-              <span class="card__header-label">Observación</span>
-              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
-  <span class="tooltip" role="tooltip">
-    <strong>Nivel de Severidad Relativa</strong>
-    Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-    🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-    🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-    🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-    🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
-  </span>
-</span>
-            </div>
-            <div class="card__body">
-              <div class="vehicles">
-                <span class="vehicles__count">17</span>
-                <span class="vehicles__label">Vehículos</span>
-              </div>
-            </div>
-            <div class="card__footer">
-              <span class="icon icon-obs">🔔</span>
-              <span class="pct">8.76 %</span>
-            </div>
-            
-          </article>
-
-          <article class="card risk track">
-            <div class="card__header">
-              <span class="card__header-label">Seguimiento</span>
-              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
-  <span class="tooltip" role="tooltip">
-    <strong>Nivel de Severidad Relativa</strong>
-    Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-    🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-    🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-    🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-    🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
-  </span>
-</span>
-            </div>
-            <div class="card__body">
-              <div class="vehicles">
-                <span class="vehicles__count">20</span>
-                <span class="vehicles__label">Vehículos</span>
-              </div>
-            </div>
-            <div class="card__footer">
-              <span class="icon icon-track">🔍</span>
-              <span class="pct">10.31 %</span>
-            </div>
-            
-          </article>
-
-          <article class="card risk severe">
-            <div class="card__header">
-              <span class="card__header-label">Alta Severidad</span>
-              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
-  <span class="tooltip" role="tooltip">
-    <strong>Nivel de Severidad Relativa</strong>
-    Clasificación basada en la comparación del comportamiento de velocidad del conductor frente al promedio de su flota o grupo operativo. No refleja necesariamente una infracción legal.<br><br>
-    🟢 Controlado: Dentro o por debajo del promedio del grupo. Sin desviaciones relevantes.<br>
-    🟡 Observación: Ligeramente por encima del promedio. Monitoreo preventivo sugerido.<br>
-    🟠 Seguimiento: Notablemente por encima del promedio. Intervención recomendada.<br>
-    🔴 Alta severidad: Significativamente por encima del promedio. Prioridad de atención.
-  </span>
-</span>
-            </div>
-            <div class="card__body">
-              <div class="vehicles">
-                <span class="vehicles__count">127</span>
-                <span class="vehicles__label">Vehículos</span>
-              </div>
-            </div>
-            <div class="card__footer">
-              <span class="icon icon-severe">⚠️</span>
-              <span class="pct">65.46 %</span>
-            </div>
-            
-          </article>
-        </div>
-      </section>
     </div>
 
     <div class="tabs">
@@ -481,4 +572,5 @@
     </div>
   </div>
 </body>
+
 </html>
