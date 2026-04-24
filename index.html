@@ -12,18 +12,25 @@
       --shadow: 0 2px 8px rgba(0, 0, 0, .16);
       --text: rgba(0, 0, 0, .87);
       --muted: rgba(0, 0, 0, .60);
-      --blue: rgb(25, 118, 210);
-      --yellow: rgb(255, 235, 59);
-      --yellow-dark: rgb(214, 192, 20);
-      --orange: rgb(255, 152, 0);
-      --orange-dark: rgb(230, 136, 0);
-      --red: rgb(244, 67, 54);
-      --red-dark: rgb(211, 47, 47);
+      --info-main: #1565C0;
+      --info-soft: #E3F2FD;
+      --info-text: #0D47A1;
 
-      --green: rgb(102, 187, 106);
-      --obs: rgb(255, 238, 88);
-      --track: rgb(255, 167, 38);
-      --severe: rgb(239, 83, 80);
+      --moderate-main: #C0A000;
+      --moderate-soft: #FFF8E1;
+      --moderate-text: #fff;
+
+      --high-main: #E65100;
+      --high-soft: #FBE9E7;
+      --high-text: #BF360C;
+
+      --critical-main: #B71C1C;
+      --critical-soft: #FDECEA;
+      --critical-text: #7F0000;
+
+      --low-main: #2E7D32;
+      --low-soft: #E8F5E9;
+      --low-text: #1B5E20;
     }
 
     * {
@@ -176,94 +183,109 @@
       line-height: 1;
     }
 
+    .indicator-icon {
+      margin-top: 8px;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
     /* Left cards */
     .metric.blue {
-      background: rgba(25, 118, 210, .12);
+      background: var(--info-soft);
+      color: var(--info-text);
     }
 
     .metric.yellow {
-      background: rgba(255, 235, 59, .16);
+      background: var(--moderate-soft);
+      color: var(--moderate-text);
     }
 
     .metric.orange {
-      background: rgba(255, 152, 0, .14);
+      background: var(--high-soft);
+      color: var(--high-text);
     }
 
     .metric.red {
-      background: rgba(244, 67, 54, .12);
+      background: var(--critical-soft);
+      color: var(--critical-text);
     }
 
     .metric.blue .card__header {
-      background: var(--blue);
+      background: var(--info-main);
       color: #fff;
     }
 
     .metric.yellow .card__header {
-      background: var(--yellow-dark);
-      color: rgba(0, 0, 0, .87);
+      background: var(--moderate-main);
+      color: var(--moderate-text);
     }
 
     .metric.orange .card__header {
-      background: var(--orange-dark);
+      background: var(--high-main);
       color: #fff;
     }
 
     .metric.red .card__header {
-      background: var(--red-dark);
+      background: var(--critical-main);
       color: #fff;
     }
 
     /* Right cards */
     .risk.green {
-      background: rgba(102, 187, 106, .13);
+      background: var(--low-soft);
+      color: var(--low-text);
     }
 
     .risk.obs {
-      background: rgba(255, 238, 88, .13);
+      background: var(--moderate-soft);
+      color: var(--moderate-text);
     }
 
     .risk.track {
-      background: rgba(255, 167, 38, .13);
+      background: var(--high-soft);
+      color: var(--high-text);
     }
 
     .risk.severe {
-      background: rgba(239, 83, 80, .13);
+      background: var(--critical-soft);
+      color: var(--critical-text);
     }
 
     .risk.green .card__header {
-      background: var(--green);
-      color: rgba(0, 0, 0, .87);
+      background: var(--low-main);
+      color: #fff;
     }
 
     .risk.obs .card__header {
-      background: var(--obs);
-      color: rgba(0, 0, 0, .87);
+      background: var(--moderate-main);
+      color: var(--moderate-text);
     }
 
     .risk.track .card__header {
-      background: var(--track);
-      color: rgba(0, 0, 0, .87);
+      background: var(--high-main);
+      color: #fff;
     }
 
     .risk.severe .card__header {
-      background: var(--severe);
-      color: rgba(0, 0, 0, .87);
+      background: var(--critical-main);
+      color: #fff;
     }
 
     .icon-green {
-      color: var(--green);
+      color: var(--low-text);
     }
 
     .icon-obs {
-      color: #9E8A00;
+      color: var(--moderate-text);
     }
 
     .icon-track {
-      color: var(--track);
+      color: var(--high-text);
     }
 
     .icon-severe {
-      color: var(--severe);
+      color: var(--critical-text);
     }
 
     /* Tooltip */
@@ -544,23 +566,50 @@
 
         <div class="cards-row cards-row--3">
           <article class="card metric yellow">
-            <div class="card__header">Moderados / 100 km</div>
+            <div class="card__header">
+              <span class="card__header-label">Moderados / 100 km</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Moderado</strong>
+                  Mayor o igual a 10 km/h y menor a 20 km/h.
+                </span>
+              </span>
+            </div>
             <div class="card__body">
               <div class="value-main">4,693</div>
+              <div class="indicator-icon">⚠️</div>
             </div>
           </article>
 
           <article class="card metric orange">
-            <div class="card__header">Graves / 100 km</div>
+            <div class="card__header">
+              <span class="card__header-label">Graves / 100 km</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Grave</strong>
+                  Mayor o igual a 20 km/h y menor a 30 km/h.
+                </span>
+              </span>
+            </div>
             <div class="card__body">
               <div class="value-main">2,005</div>
+              <div class="indicator-icon">⚠️⚠️</div>
             </div>
           </article>
 
           <article class="card metric red">
-            <div class="card__header">Críticos / 100 km</div>
+            <div class="card__header">
+              <span class="card__header-label">Críticos / 100 km</span>
+              <span class="tooltip-icon" tabindex="0" aria-label="Más información" role="button">ⓘ
+                <span class="tooltip" role="tooltip">
+                  <strong>Crítico</strong>
+                  Mayor o igual a 30 km/h.
+                </span>
+              </span>
+            </div>
             <div class="card__body">
               <div class="value-main">1,147</div>
+              <div class="indicator-icon">🚨</div>
             </div>
           </article>
         </div>
